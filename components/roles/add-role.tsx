@@ -64,7 +64,7 @@ export const AddRole = ({ children }: AddRoleProps) => {
 
   const { mutate } = useMutation({
     mutationKey: ["add-role"],
-    mutationFn: async (data: any): Promise<RoleResponse> => {
+    mutationFn: async (data: unknown): Promise<RoleResponse> => {
       const response = await fetch(`${BASE_URL}/roles/new_role`, {
         method: "POST",
         headers: {

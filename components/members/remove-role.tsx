@@ -1,6 +1,5 @@
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -9,7 +8,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { Dispatch, ReactNode, SetStateAction, useState } from "react";
+import { ReactNode, useState } from "react";
 import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -40,7 +39,7 @@ export const RemoveRole = ({
   const [open, setOpen] = useState<boolean>(false);
   const { mutate } = useMutation({
     mutationKey: ["remove-role"],
-    mutationFn: async (data: any): Promise<Response> => {
+    mutationFn: async (data: unknown): Promise<Response> => {
       const response = await fetch(`${BASE_URL}/users/remove_role`, {
         method: "DELETE",
         headers: {

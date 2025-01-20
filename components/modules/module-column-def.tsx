@@ -2,13 +2,9 @@
 import { format } from "date-fns";
 import { ColumnDef } from "@tanstack/react-table";
 import { Module } from "./module";
-import { Trash, Pencil } from "lucide-react";
 import { DataTableColumnHeader } from "../shared/custom-header";
-
 import { Label } from "../ui/label";
-import { Button } from "../ui/button";
 import { DeleteModule } from "./delete-module";
-import { useState } from "react";
 import { UpdateModule } from "./update-module";
 
 export const ModuleColumns: ColumnDef<Module>[] = [

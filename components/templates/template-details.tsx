@@ -3,8 +3,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ScrollArea } from "../ui/scroll-area";
 import { Label } from "../ui/label";
 import EngagementDetailsTemplate from "./engagement/engagement-details";
-import { Button } from "../ui/button";
-import { CircleArrowLeft } from "lucide-react";
 
 export default function TemplatesDetails() {
   return (

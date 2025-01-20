@@ -18,7 +18,7 @@ import { Button } from "../ui/button";
 import { Pencil } from "lucide-react";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
-import { useId, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { showToast } from "../shared/toast";
 import { useRouter } from "next/navigation";
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -34,10 +34,9 @@ export const UpdateMember = ({ id }: UpdateMemberProps) => {
   const emailRef = useRef<HTMLInputElement>(null);
   const telephonRef = useRef<HTMLInputElement>(null);
   const [status, setStatus] = useState<string>("");
-  const [type, settype] = useState<string>("");
   const { mutate } = useMutation({
     mutationKey: ["update-member"],
-    mutationFn: async (data: any) => {
+    mutationFn: async (data: unknown) => {
       const response = await fetch(`${BASE_URL}/users/update_user`, {
         method: "PUT",
         headers: {
@@ -62,7 +61,6 @@ export const UpdateMember = ({ id }: UpdateMemberProps) => {
           telephonRef.current?.value === "" ? null : telephonRef.current?.value,
         email: emailRef.current?.value === "" ? null : emailRef.current?.value,
         status: status === "" ? null : status,
-        type: type === "" ? null : type,
       },
       {
         onSuccess: (data) => {

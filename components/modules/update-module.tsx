@@ -26,7 +26,7 @@ export const UpdateModule = ({ id }: UpdateModuleProps) => {
   const descriptionRef = useRef<HTMLInputElement>(null);
   const { mutate } = useMutation({
     mutationKey: ["update-module"],
-    mutationFn: async (data: any) => {
+    mutationFn: async (data: unknown) => {
       const response = await fetch(`${BASE_URL}/modules/update_module`, {
         method: "PUT",
         headers: {

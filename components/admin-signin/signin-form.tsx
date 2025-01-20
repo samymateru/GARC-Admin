@@ -11,8 +11,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import ClipLoader from "react-spinners/ClipLoader";
 import { showToast } from "../shared/toast";
 import { FormError } from "../shared/form-error";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
+import Image from "next/image";
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export type LoginResponse = {
@@ -171,7 +172,9 @@ export function SignIn({ className, ...props }: React.ComponentProps<"div">) {
               </div>
             </form>
             <div className="relative hidden bg-muted md:block">
-              <img
+              <Image
+                width={500}
+                height={500}
                 src="https://ui.shadcn.com/placeholder.svg"
                 alt="Image"
                 className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"

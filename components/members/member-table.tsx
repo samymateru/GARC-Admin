@@ -27,11 +27,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { DataTablePagination } from "../shared/custom-pagination";
 import { Input } from "../ui/input";
 import AddMember from "./add-member";
-import { CirclePlus, Plus, Search, UserPlus } from "lucide-react";
-import { Label } from "../ui/label";
+import { CirclePlus, Search } from "lucide-react";
+
 import AdminNavToolTip from "../navigation/tooltip";
 import { Tabs, TabsContent } from "../ui/tabs";
 

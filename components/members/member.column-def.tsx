@@ -2,7 +2,7 @@
 import { format } from "date-fns";
 import { ColumnDef } from "@tanstack/react-table";
 import { Member } from "./members-details";
-import { Trash, Pencil, Ellipsis, Check, X, Plus } from "lucide-react";
+import { Trash, Ellipsis, Plus, X } from "lucide-react";
 import {
   Dialog,
   DialogTitle,
@@ -17,8 +17,6 @@ import { Button } from "../ui/button";
 import { DataTableColumnHeader } from "../shared/custom-header";
 import { DeleteMember } from "./delete-member";
 import { UpdateMember } from "./update-member";
-import { Separator } from "../ui/separator";
-import { useEffect, useState } from "react";
 import { AddRoleToMember } from "./add-role-to-member";
 import AdminNavToolTip from "../navigation/tooltip";
 import { RemoveRole } from "./remove-role";
@@ -26,6 +24,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Roles } from "../roles/roles-details";
 import { useRouter } from "next/navigation";
 import { showToast } from "../shared/toast";
+import { useState } from "react";
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const MembersColumns: ColumnDef<Member>[] = [
@@ -118,7 +117,7 @@ export const MembersColumns: ColumnDef<Member>[] = [
   },
   {
     accessorKey: "roles",
-    header: ({ column }) => {
+    header: () => {
       return <span className="text-xs">Roles</span>;
     },
     cell: ({ row }) => {

@@ -6,19 +6,21 @@ import { EngagementTemplateTable } from "./engagement-template-table";
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export type EngagementTemplate = {
-  name: string | null;
-  category: string | null;
-  phases: Array<string> | null;
-  actions: Array<string> | null;
-  procedures: Array<string> | null;
-  id: string | null;
-  created_at: Date | null;
+  template_name?: string | null;
+  template_id?: number | null;
+  name?: string | null;
+  category?: string | null;
+  phases?: Array<string> | null;
+  actions?: Array<string> | null;
+  procedures?: Array<string> | null;
+  id?: number | null;
+  created_at?: Date | null;
 };
 
 export type Response = {
   detail?: string;
   status_code?: number;
-  payload: Array<any>;
+  payload: EngagementTemplate[];
 };
 
 export default function EngagementDetailsTemplate() {
@@ -71,6 +73,8 @@ export default function EngagementDetailsTemplate() {
       const template: EngagementTemplate[] = [
         {
           name: null,
+          template_id: null,
+          template_name: null,
           category: null,
           phases: null,
           actions: null,
@@ -88,25 +92,26 @@ export default function EngagementDetailsTemplate() {
       );
     }
     if (data.status_code === 200) {
-      const engagement_template: EngagementTemplate[] = data?.payload.map(
-        ({
-          category,
-          template_id,
-          phases,
-          actions,
-          procedures,
-          created_at,
-          template_name,
-        }) => ({
-          category: category,
-          id: template_id,
-          phases: phases,
-          actions: actions,
-          procedures: procedures,
-          created_at: created_at,
-          name: template_name,
-        })
-      );
+      const engagement_template: EngagementTemplate[] =
+        data?.payload.map(
+          ({
+            category,
+            template_id,
+            phases,
+            actions,
+            procedures,
+            created_at,
+            template_name,
+          }) => ({
+            category: category,
+            id: template_id,
+            phases: phases,
+            actions: actions,
+            procedures: procedures,
+            created_at: created_at,
+            name: template_name,
+          })
+        ) || [];
       return (
         <EngagementTemplateTable
           data={engagement_template}

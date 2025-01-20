@@ -27,14 +27,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { DataTablePagination } from "../shared/custom-pagination";
 import { Input } from "../ui/input";
 import { AddRole } from "./add-role";
-import { CirclePlus, Plus, Search } from "lucide-react";
-import { Label } from "../ui/label";
+import { CirclePlus, Search } from "lucide-react";
 import AdminNavToolTip from "../navigation/tooltip";
-import { Tabs, TabsContent } from "../ui/tabs";
-import { ScrollArea } from "../ui/scroll-area";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -45,7 +41,6 @@ export function RoleTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const [filterTab, setFilterTab] = useState<string>("Name");
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);

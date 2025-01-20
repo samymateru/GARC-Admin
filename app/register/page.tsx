@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -13,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Mail, AtSign, User, Factory, Phone, Eye, EyeOff } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,8 +24,6 @@ import { showToast } from "@/components/shared/toast";
 import Link from "next/link";
 import { Toaster } from "@/components/ui/sonner";
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-
-console.log(BASE_URL);
 
 const RegisterSchema = z.object({
   name: z.string().min(1, "Company name cannot be empty"),

@@ -28,12 +28,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ScrollArea } from "../ui/scroll-area";
-import { DataTablePagination } from "../shared/custom-pagination";
 import { Input } from "../ui/input";
 import { AddModule } from "./add-module";
-import { CirclePlus, Plus, Search } from "lucide-react";
-import { Label } from "../ui/label";
+import { CirclePlus, Search } from "lucide-react";
+
 import AdminNavToolTip from "../navigation/tooltip";
 
 interface DataTableProps<TData, TValue> {

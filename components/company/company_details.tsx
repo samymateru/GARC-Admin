@@ -11,33 +11,12 @@ import {
   Phone,
   User,
 } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import AdminNavToolTip from "../navigation/tooltip";
 import { Separator } from "../ui/separator";
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-type Response = {
-  status_code?: number;
-  payload?: {
-    name: string;
-    owner: string;
-    email: string;
-    telephone: string;
-    status: boolean;
-    description: string;
-    website: string;
-  };
-  detail?: string;
-};
 export const CompanyDetails = () => {
   const router = useRouter();
   const { data, isError, isLoading, isSuccess } = useQuery({

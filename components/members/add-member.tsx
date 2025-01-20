@@ -48,6 +48,11 @@ type MemberResponse = {
   payload?: Member[];
 };
 
+interface RoleElement {
+  value?: string;
+  label?: string;
+}
+
 const MemberSchema = z.object({
   name: z.string().min(1, "Company name cannot be empty"),
   email: z.string().email({ message: "Provide valid email" }),
@@ -57,7 +62,7 @@ export default function AddMember({ children }: AddMemberProps) {
   const router = useRouter();
   const queryClient = useQueryClient();
   const [open, setOpen] = useState<boolean>(false);
-  const [roles, setRole] = useState<any>();
+  const [roles, setRole] = useState<RoleElement[]>([]);
   const { data, isLoading } = useQuery({
     queryKey: ["fetch-roles"],
     queryFn: async (): Promise<Response> => {
@@ -90,8 +95,8 @@ export default function AddMember({ children }: AddMemberProps) {
       if (data?.status_code === 200) {
         setRole(
           data.payload.map(({ id, name }) => ({
-            value: id?.toString(),
-            label: name,
+            value: id?.toString() || "",
+            label: name || "",
           }))
         );
       }
@@ -102,7 +107,7 @@ export default function AddMember({ children }: AddMemberProps) {
         router.push("/admin-signin");
       }
     }
-  }, [data, isLoading]);
+  }, [data, isLoading, router]);
 
   const { mutate } = useMutation({
     mutationKey: ["add-member"],
@@ -212,12 +217,12 @@ export default function AddMember({ children }: AddMemberProps) {
                       </SelectTrigger>
                       <SelectContent className="p-2">
                         {roles.length > 0 ? (
-                          roles.map((item: any) => (
+                          roles.map((item: RoleElement) => (
                             <SelectItem
                               key={item.value}
-                              value={item.value}
+                              value={item.value || ""}
                               className="dark:hover:bg-accent cursor-pointer">
-                              {item.label}
+                              {item.label || ""}
                             </SelectItem>
                           ))
                         ) : (

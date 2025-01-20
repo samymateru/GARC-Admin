@@ -10,7 +10,6 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useState } from "react";
-import { Button } from "../ui/button";
 import { Trash } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { showToast } from "../shared/toast";
@@ -26,7 +25,7 @@ export const DeleteMember = ({ id }: DeleteModuleProps) => {
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
     mutationKey: ["delete-member"],
-    mutationFn: async (data: any) => {
+    mutationFn: async (data: unknown) => {
       console.log(JSON.stringify(data));
       const response = await fetch(`${BASE_URL}/users/delete_user/`, {
         method: "DELETE",

@@ -7,13 +7,6 @@ import {
 } from "lucide-react";
 
 import { Button } from "../ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>;

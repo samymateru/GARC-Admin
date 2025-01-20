@@ -4,12 +4,6 @@
 import React from "react";
 import { Toaster, toast } from "sonner";
 
-interface ToastProps {
-  message?: string;
-  variant?: "success" | "error" | "warning";
-  alignment?: "top-left" | "top-right" | "bottom-left" | "bottom-right";
-}
-
 export const showToast = (
   message?: string,
   variant?: "success" | "error" | "warning"

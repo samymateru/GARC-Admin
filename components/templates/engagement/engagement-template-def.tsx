@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import { format } from "date-fns";
 import { ColumnDef } from "@tanstack/react-table";
-import { Ellipsis, Check, X, EllipsisIcon } from "lucide-react";
+import { X, EllipsisIcon } from "lucide-react";
 import {
   Popover,
   PopoverContent,
@@ -10,7 +11,7 @@ import {
 import { EngagementTemplate } from "./engagement-details";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { DataTableColumnHeader } from "@/components/shared/custom-header";
@@ -69,7 +70,7 @@ export const EngagementTemplateColumns: ColumnDef<EngagementTemplate>[] = [
               </div>
               <ScrollArea className=" h-[150px]">
                 <div className="pt-3 flex flex-col w-fit">
-                  {row.original.phases.map((item, index) => (
+                  {row.original.phases?.map((item, index) => (
                     <Label
                       key={index}
                       className="font-semibold tracking-normal font-sans text-base">
@@ -115,7 +116,7 @@ export const EngagementTemplateColumns: ColumnDef<EngagementTemplate>[] = [
               </div>
               <ScrollArea className=" h-[150px]">
                 <div className="pt-3 flex flex-col w-fit">
-                  {row.original.actions.map((item, index) => (
+                  {row.original.actions?.map((item, index) => (
                     <Label
                       key={index}
                       className="font-semibold tracking-normal font-sans text-base">
@@ -161,7 +162,7 @@ export const EngagementTemplateColumns: ColumnDef<EngagementTemplate>[] = [
               </div>
               <ScrollArea className=" h-[150px]">
                 <div className="pt-3 flex flex-col w-fit">
-                  {row.original.procedures.map((item, index) => (
+                  {row.original.procedures?.map((item, index) => (
                     <Label
                       key={index}
                       className="font-semibold tracking-normal font-serif text-base">

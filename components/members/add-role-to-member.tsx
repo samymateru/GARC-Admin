@@ -14,18 +14,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Label } from "../ui/label";
 import { Roles } from "../roles/roles-details";
 import { Button } from "../ui/button";
-import { Plus, Send, X } from "lucide-react";
+import { Send, X } from "lucide-react";
 import { showToast } from "../shared/toast";
 import { useRouter } from "next/navigation";
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -52,12 +46,12 @@ export const AddRoleToMember = ({
   const queryClient = useQueryClient();
   const router = useRouter();
   const [open, setOpen] = useState<boolean>(false);
-  const [roles, setRoles] = useState<Array<any>>([]);
+  const [roles, setRoles] = useState<Roles[]>([]);
   const [role_id, setId] = useState<number>(0);
 
   const { mutate } = useMutation({
     mutationKey: ["add-user-role"],
-    mutationFn: async (data: any): Promise<Response> => {
+    mutationFn: async (data: unknown): Promise<Response> => {
       const response = await fetch(`${BASE_URL}/users/add_role`, {
         method: "POST",
         headers: {
@@ -135,9 +129,9 @@ export const AddRoleToMember = ({
                 <SelectValue placeholder="Role" className="font-serif" />
               </SelectTrigger>
               <SelectContent className="w-full py-2">
-                {roles.map((item: any, index: number) => (
+                {roles.map((item, index: number) => (
                   <SelectItem
-                    value={item.id}
+                    value={String(item.id)}
                     key={index}
                     className="dark:hover:bg-accent cursor-pointer">
                     {item.name}

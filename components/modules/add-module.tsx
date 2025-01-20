@@ -24,7 +24,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "../ui/button";
 import { Package, Plus, X } from "lucide-react";
 import { FormError } from "../shared/form-error";
-import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -55,7 +54,7 @@ export const AddModule = ({ children }: AddModuleProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const queryClient = useQueryClient();
   const router = useRouter();
-  const { mutate, isPending } = useMutation({
+  const { mutate } = useMutation({
     mutationKey: ["add-module"],
     mutationFn: async (
       data: z.infer<typeof ModuleSchema>

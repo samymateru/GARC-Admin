@@ -1,6 +1,5 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-import { DataTable } from "../shared/data-table";
 import { RolesColumns } from "./roles-column-def";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { CircleAlert } from "lucide-react";

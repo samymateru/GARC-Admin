@@ -43,7 +43,7 @@ export default function AddEngagementTemplate({
   const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   const { mutate } = useMutation({
-    mutationFn: async (data: any) => {
+    mutationFn: async (data: unknown) => {
       const response = await fetch(`${BASE_URL}/templates/new_template`, {
         method: "POST",
         headers: {
@@ -315,10 +315,6 @@ export default function AddEngagementTemplate({
                     className=""
                     variant="ghost"
                     onClick={() => {
-                      const x =
-                        phases.length > 0 &&
-                        actions.length > 0 &&
-                        procedures.length > 0;
                       setTab("name");
                     }}>
                     <Label className="tracking-tight font-semibold cursor-pointer">
@@ -337,10 +333,7 @@ export default function AddEngagementTemplate({
               <Label className="font-semibold tracking-tight scroll-m-0">
                 Template Name
               </Label>
-              <Input
-                value={name}
-                onChange={(e) => setName((prev) => (prev = e.target.value))}
-              />
+              <Input value={name} onChange={(e) => setName(e.target.value)} />
             </div>
             <div className="flex gap-10 items-center">
               <Button onClick={() => setTab("procedures")} variant="ghost">

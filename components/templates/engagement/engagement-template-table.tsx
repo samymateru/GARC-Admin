@@ -29,10 +29,8 @@ import {
 } from "@/components/ui/table";
 import { DataTablePagination } from "@/components/shared/custom-pagination";
 import { Input } from "@/components/ui/input";
-import { CirclePlus, Plus, Search } from "lucide-react";
-import { Label } from "@/components/ui/label";
+import { CirclePlus, Search } from "lucide-react";
 import AdminNavToolTip from "@/components/navigation/tooltip";
-import { TabsContent, Tabs } from "@/components/ui/tabs";
 import AddEngagementTemplate from "./add-engagement-template";
 
 interface DataTableProps<TData, TValue> {
@@ -44,7 +42,6 @@ export function EngagementTemplateTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const [filterTab, setFilterTab] = useState<string>("Name");
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
