@@ -5,13 +5,14 @@ import { CircleAlert } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { MembersColumns } from "./member.column-def";
 import { MemberTable } from "./member-table";
+import { Roles } from "../roles/roles-details";
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export type Member = {
-  id?: number | null;
+  id: number | null;
   name?: string | null;
   status?: boolean | null;
-  role?: string | null;
+  roles?: Array<Roles> | null;
   email?: string | null;
   telephone?: string | null;
   created_at?: Date | null;
@@ -76,7 +77,7 @@ export default function MemberDetails() {
           id: null,
           name: null,
           status: null,
-          role: null,
+          roles: null,
           email: null,
           telephone: null,
           created_at: null,

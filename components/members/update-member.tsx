@@ -21,7 +21,6 @@ import { Input } from "../ui/input";
 import { useId, useRef, useState } from "react";
 import { showToast } from "../shared/toast";
 import { useRouter } from "next/navigation";
-
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 interface UpdateMemberProps {
@@ -122,30 +121,6 @@ export const UpdateMember = ({ id }: UpdateMemberProps) => {
               <SelectContent>
                 <SelectItem value="true">Active</SelectItem>
                 <SelectItem value="false">Inactive</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="">
-            <Label htmlFor={id}>Type</Label>
-            <Select value={type} onValueChange={(type) => settype(type)}>
-              <SelectTrigger id={id}>
-                <SelectValue placeholder="Select type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="admin">Admin</SelectItem>
-                <SelectItem value="normal">Normal</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="">
-            <Label htmlFor={id}>Roles</Label>
-            <Select defaultValue="true" required>
-              <SelectTrigger id={id}>
-                <SelectValue placeholder="Select role" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="true">Admin</SelectItem>
-                <SelectItem value="false">Normal</SelectItem>
               </SelectContent>
             </Select>
           </div>

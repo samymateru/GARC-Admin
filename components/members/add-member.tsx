@@ -51,7 +51,7 @@ type MemberResponse = {
 const MemberSchema = z.object({
   name: z.string().min(1, "Company name cannot be empty"),
   email: z.string().email({ message: "Provide valid email" }),
-  role: z.string(),
+  role_id: z.array(z.number()).min(1, "At least one role ID must be provided"),
 });
 export default function AddMember({ children }: AddMemberProps) {
   const router = useRouter();
@@ -128,6 +128,7 @@ export default function AddMember({ children }: AddMemberProps) {
   const onSubmit: SubmitHandler<z.infer<typeof MemberSchema>> = async (
     data
   ) => {
+    console.log(data);
     mutate(data, {
       onSuccess: (data) => {
         reset();
@@ -194,12 +195,18 @@ export default function AddMember({ children }: AddMemberProps) {
               <div className="space-y-1">
                 <Label>Roles</Label>
                 <Controller
-                  name="role"
+                  name="role_id"
                   control={control}
                   render={({ field }) => (
                     <Select
-                      value={field.value}
-                      onValueChange={(value) => field.onChange(value)}>
+                      value={
+                        field.value && field.value.length > 0
+                          ? field.value[0].toString()
+                          : ""
+                      }
+                      onValueChange={(value) =>
+                        field.onChange([parseInt(value, 10)])
+                      }>
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Select role" />
                       </SelectTrigger>
@@ -222,7 +229,7 @@ export default function AddMember({ children }: AddMemberProps) {
                     </Select>
                   )}
                 />
-                <FormError error={errors.role} />
+                <FormError error={errors.role_id} />
               </div>
 
               <div className="flex justify-end items-center gap-2">

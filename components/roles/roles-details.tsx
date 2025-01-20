@@ -12,6 +12,7 @@ export type Roles = {
   id: number | null;
   name?: string | null;
   description?: string | null;
+  category?: string | null;
   write?: boolean | null;
   read?: boolean | null;
   edit?: boolean | null;
@@ -78,6 +79,7 @@ export default function Roles() {
           id: null,
           name: null,
           description: null,
+          category: null,
           write: null,
           read: null,
           edit: null,
@@ -94,6 +96,7 @@ export default function Roles() {
       );
     }
     if (data.status_code === 200) {
+      console.log(data.payload);
       return (
         <div className=" bg-white h-full dark:bg-background">
           <RoleTable data={data?.payload} columns={RolesColumns} />

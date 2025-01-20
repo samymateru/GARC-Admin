@@ -8,6 +8,7 @@ body {
   
 }
 
+
 /* Prevent autofill background color from becoming white and maintain text color */
 input:-webkit-autofill {
   background-color: #2d2d2d !important; /* Set to your input's default background color */

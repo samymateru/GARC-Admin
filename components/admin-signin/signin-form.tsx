@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import ToggleTheme from "../shared/theme-toggle";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
@@ -29,7 +28,6 @@ const LoginSchema = z.object({
 
 export function SignIn({ className, ...props }: React.ComponentProps<"div">) {
   const router = useRouter();
-  const queryClient = useQueryClient();
   const {
     register,
     reset,
@@ -39,10 +37,10 @@ export function SignIn({ className, ...props }: React.ComponentProps<"div">) {
     resolver: zodResolver(LoginSchema),
   });
 
-  const { mutate, isPending, isError } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ["signin"],
     mutationFn: async (data: z.infer<typeof LoginSchema>) => {
-      const response = await fetch(`${BASE_URL}/token`, {
+      const response = await fetch(`${BASE_URL}/admin_auth`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

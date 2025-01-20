@@ -41,6 +41,23 @@ export const RolesColumns: ColumnDef<Roles>[] = [
     },
   },
   {
+    accessorKey: "category",
+    header: ({ column }) => {
+      return <DataTableColumnHeader column={column} title="Category" />;
+    },
+    cell: ({ row }) => {
+      if (row.original.category === null) {
+        return <span></span>;
+      } else {
+        return (
+          <Label className="text-[13px] tracking-wide dark:text-gray-300">
+            {row.original.category}
+          </Label>
+        );
+      }
+    },
+  },
+  {
     accessorKey: "description",
     header: () => {
       return <span className="text-xs">Description</span>;
