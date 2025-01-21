@@ -2,7 +2,7 @@
 import { format } from "date-fns";
 import { ColumnDef } from "@tanstack/react-table";
 import { Roles } from "./roles-details";
-import { Ellipsis, Check, X, Pencil, Trash } from "lucide-react";
+import { Ellipsis, Check, X } from "lucide-react";
 import "../../app/globals.css";
 import {
   Popover,
@@ -12,7 +12,8 @@ import {
 import { Label } from "../ui/label";
 import { Separator } from "../ui/separator";
 import { DataTableColumnHeader } from "../shared/custom-header";
-import { Button } from "../ui/button";
+import { DeleteRole } from "./delete-role";
+import { UpdateRole } from "./update-role";
 
 export const RolesColumns: ColumnDef<Roles>[] = [
   {
@@ -178,14 +179,9 @@ export const RolesColumns: ColumnDef<Roles>[] = [
         return <span></span>;
       } else {
         return (
-          <div className="w-full">
-            <Button variant="ghost">
-              <Pencil />
-            </Button>
-
-            <Button variant="ghost">
-              <Trash color="red" />
-            </Button>
+          <div className="w-full flex items-center">
+            <UpdateRole id={row.original.id || 0} />
+            <DeleteRole role_id={row.original.id || 0} />
           </div>
         );
       }

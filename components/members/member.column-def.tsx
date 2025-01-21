@@ -355,7 +355,7 @@ const UserRolesList = ({ user_id, user_name }: UserRolesListProps) => {
                   <div
                     role="button"
                     tabIndex={0}
-                    className="cursor-pointer w-[30px] h-[30px] flex justify-center items-center hover:dark:bg-accent rounded-md">
+                    className="cursor-pointer w-[40px] h-[30px] flex justify-center items-center hover:dark:bg-accent rounded-md">
                     <Plus size={16} />
                   </div>
                 </AdminNavToolTip>

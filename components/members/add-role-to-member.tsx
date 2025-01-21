@@ -114,7 +114,6 @@ export const AddRoleToMember = ({
           variant={"ghost"}>
           <X size={16} />
         </Button>
-
         <DialogHeader>
           <DialogTitle className="text-2xl tracking-wide font-serif">
             Add Role

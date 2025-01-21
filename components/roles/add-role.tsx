@@ -106,7 +106,6 @@ export const AddRole = ({ children }: AddRoleProps) => {
       approve: approve,
       edit: edit,
     };
-    console.log(data);
     mutate(data, {
       onSuccess: (data) => {
         if (data.status_code === 501) {

@@ -95,7 +95,6 @@ export default function Roles() {
       );
     }
     if (data.status_code === 200) {
-      console.log(data.payload);
       return (
         <div className=" bg-white h-full dark:bg-background">
           <RoleTable data={data?.payload} columns={RolesColumns} />

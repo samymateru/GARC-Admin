@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import { Label } from "../ui/label";
@@ -39,6 +41,7 @@ export const CompanyDetails = () => {
     refetchOnReconnect: true,
     refetchOnWindowFocus: false,
   });
+  console.log(data);
   if (isLoading) {
     return (
       <div className="h-full flex justify-center items-center w-full">
@@ -47,7 +50,6 @@ export const CompanyDetails = () => {
     );
   }
   if (isError) {
-    console.log(data.status_code);
     return (
       <div className="h-full flex items-center justify-center w-full">
         <div className="rounded-lg border border-red-500/50 px-4 py-3 text-red-600 w-[200px]">
@@ -65,8 +67,8 @@ export const CompanyDetails = () => {
     );
   }
   if (isSuccess) {
+    console.log(data);
     if (data.status_code === 200) {
-      console.log(data.payload.status);
       return (
         <div>
           <Separator className="bg-neutral-400" />
