@@ -67,8 +67,8 @@ export const CompanyDetails = () => {
     );
   }
   if (isSuccess) {
-    console.log(data);
     if (data.status_code === 200) {
+      console.log(data.payload?.website);
       return (
         <div>
           <Separator className="bg-neutral-400" />
@@ -123,26 +123,29 @@ export const CompanyDetails = () => {
                   </div>
                 </section>
                 <section className="mt-2">
-                  <div className="flex items-center ml-2">
-                    <div className="dark:bg-accent p-2 rounded-md">
-                      <AdminNavToolTip message="Website" side="top">
-                        <Globe />
-                      </AdminNavToolTip>
+                  {data.payload?.website ? (
+                    <div className="flex items-center ml-2">
+                      <div className="dark:bg-accent p-2 rounded-md">
+                        <AdminNavToolTip message="Website" side="top">
+                          <Globe />
+                        </AdminNavToolTip>
+                      </div>
+                      <div className=" py-2 rounded-md min-w-[100px] px-3">
+                        <Label className="font-serif text-[14px] tracking-wide">
+                          <Link
+                            href={
+                              data.payload?.website ||
+                              "https://www.capstone.co.tz/"
+                            }
+                            target="_blank">
+                            {data.payload?.website}
+                          </Link>
+                        </Label>
+                      </div>
                     </div>
-                    <div className=" py-2 rounded-md min-w-[100px] px-3">
-                      <Label className="font-serif text-[14px] tracking-wide">
-                        <Link
-                          href={
-                            data.payload?.website ||
-                            "https://www.capstone.co.tz/"
-                          }
-                          target="_blank">
-                          {data.payload?.website ||
-                            "https://www.capstone.co.tz/"}
-                        </Link>
-                      </Label>
-                    </div>
-                  </div>
+                  ) : (
+                    ""
+                  )}
                 </section>
                 <section className="mt-2">
                   <div className="flex items-center ml-2">

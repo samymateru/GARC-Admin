@@ -31,7 +31,7 @@ const RegisterSchema = z.object({
   telephone: z.string().min(1, { message: "Provide company phone" }),
   email: z.string().email({ message: "Provide valid email" }),
   password: z.string().min(1, { message: "Password field can't be empty" }),
-  website: z.string().url({ message: "provide valid url" }),
+  website: z.string().optional(),
   description: z.string().min(1, { message: "Description cannot be empty" }),
 });
 
